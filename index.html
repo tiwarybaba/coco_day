@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Coco Day Bubba</title>
+    <style>
+        body {
+            background-color: #4e2c1e; /* Chocolate brown */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            position: relative;
+        }
+        h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #8B4513;
+            color: white;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #A0522D;
+        }
+        .choco {
+            position: absolute;
+            font-size: 40px;
+            animation: fall linear infinite, rotateChoco linear infinite;
+            filter: brightness(180%); /* Brighten to look like white chocolate */
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        @keyframes rotateChoco {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HAPPY COCO DAY BUBBA ❤️ I LOVE YOU! 🍫</h1>
+        <button class="btn" onclick="startChocolates()">Ye lo white coco 🍫</button>
+    </div>
+
+    <script>
+        function startChocolates() {
+            setInterval(() => {
+                let choco = document.createElement("div");
+                choco.classList.add("choco");
+                choco.textContent = "🍫"; // Chocolate emoji
+                
+                let size = Math.random() * 20 + 30; // Random size
+                
+                choco.style.fontSize = size + "px";
+                choco.style.left = Math.random() * window.innerWidth + "px"; // Random horizontal position
+                choco.style.top = "-50px"; // Start from above the screen
+                choco.style.animationName = "fall";
+                choco.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+                choco.style.animationTimingFunction = "ease-in-out";
+                choco.style.filter = "brightness(180%)"; // Make it look like white chocolate
+                
+                document.body.appendChild(choco);
+
+                // Click to remove chocolate effect
+                choco.onclick = function () {
+                    choco.style.transform = "scale(1.3)";
+                    setTimeout(() => {
+                        choco.remove();
+                    }, 500);
+                };
+
+                setTimeout(() => {
+                    choco.remove();
+                }, 5000);
+            }, 200);
+        }
+    </script>
+</body>
+</html>
